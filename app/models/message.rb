@@ -5,5 +5,11 @@ class Message < ApplicationRecord
 
   validates :user_id,
             :group_id,
-            presence: true
+            :content_or_image,
+            presence: true   
+
+  private
+    def content_or_image
+      content.presence or image.presence
+    end
 end
